@@ -199,8 +199,13 @@
     <Compile Include="Migrations\201612141433357_AddNameToApplicationUser.Designer.cs">
       <DependentUpon>201612141433357_AddNameToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612141556267_AddAttendances.cs" />
+    <Compile Include="Migrations\201612141556267_AddAttendances.Designer.cs">
+      <DependentUpon>201612141556267_AddAttendances.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddPhoneNumberViewModel.cs" />
+    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\ChangePasswordViewModel.cs" />
     <Compile Include="Models\ConfigureTwoFactorViewModel.cs" />
     <Compile Include="Models\ExternalLoginConfirmationViewModel.cs" />
@@ -313,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612141433357_AddNameToApplicationUser.resx">
       <DependentUpon>201612141433357_AddNameToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612141556267_AddAttendances.resx">
+      <DependentUpon>201612141556267_AddAttendances.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

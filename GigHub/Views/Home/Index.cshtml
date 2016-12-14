@@ -34,8 +34,7 @@
         $(document).ready(function() {
             $(".js-toggle-attendance").click(function(e) {
                 var button = $(e.target);
-                                           //This object literal will bind it to the Controller FromBody
-                $.post("/api/attendances", { "": button.attr("data-gig-id") })
+                $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
                     .done(function() {
                         button
                             .removeClass("btn-default")

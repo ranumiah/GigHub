@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<h1>@Model.Heading</h1>
+<h2>@Model.Heading</h2>
 @* By giving a class name we can now identify any of its element in the CSS *@
 <ul class="gigs voffset3"> @* voffset3 created in Site.css *@
     @foreach (var gig in Model.UpcomingGigs)

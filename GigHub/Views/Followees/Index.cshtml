@@ -4,8 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Who I Follow</h1>
-<ul>
+<h2>Who I Follow</h2>
+<ul class="voffset3">
     @foreach (var artist in Model)
     {
         <li>@artist.Name</li>

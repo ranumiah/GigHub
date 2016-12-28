@@ -183,10 +183,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
+    <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\GigsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Dtos\AttendanceDto.cs" />
+    <Compile Include="Dtos\FollowingDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -218,6 +220,10 @@
     <Compile Include="Migrations\201612141556267_AddAttendances.Designer.cs">
       <DependentUpon>201612141556267_AddAttendances.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612281051576_AddFollowing.cs" />
+    <Compile Include="Migrations\201612281051576_AddFollowing.Designer.cs">
+      <DependentUpon>201612281051576_AddFollowing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -227,6 +233,7 @@
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ExternalLoginListViewModel.cs" />
     <Compile Include="Models\FactorViewModel.cs" />
+    <Compile Include="Models\Following.cs" />
     <Compile Include="Models\ForgotPasswordViewModel.cs" />
     <Compile Include="Models\ForgotViewModel.cs" />
     <Compile Include="Models\Genre.cs" />
@@ -336,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612141556267_AddAttendances.resx">
       <DependentUpon>201612141556267_AddAttendances.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612281051576_AddFollowing.resx">
+      <DependentUpon>201612281051576_AddFollowing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

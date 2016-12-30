@@ -27,10 +27,50 @@
                 <div class="actions">
                     <a href="@Url.Action("Edit", "Gigs", new { id = gig.Id })">
                         Edit
+                    </a> |
+                    @*class="js-cancel-gig" ==> This is a selector with js prefix to inform of it will be use in script and not presentation*@
+                    @*data-gig-id="@gig.Id"==> This data attribute is need for the Jquery code*@
+                    <a href="#" class="js-cancel-gig" data-gig-id="@gig.Id">
+                        Cancel
                     </a>
                 </div>
             </div>
         </li>
     }
 </ul>
+@*This script implements the logical delete*@
+@section scripts
+{
+    <script>
+        //When Document is ready then this function will be called
+        $(document).ready(function () {
 
+            // Get all objects with the class="js-cancel-gig" and when Click then call this function
+            $(".js-cancel-gig").click(function (e) { // e ==> is the event
+                
+                // link ==> is the source of the event
+                var link = $(e.target);
+
+                // Ask for confirmation using native javascript confirm box
+                if (confirm("Are you sure you want to delete this gig?")) {
+                    // if true then use jQuery AJAX
+                    $.ajax({
+                        url: "/api/gigs/" + link.attr("data-gig-id"),
+                        method: "DELETE" // [HttpDelete]
+                    })// This returns a Promise therefore .done and .fail scenario need to be handle
+                    .done(function () {
+                        // The parent of class="js-cancel-gig" Selector ==> <li></li>
+                        // Will have a fade out animation
+                        link.parents("li").fadeOut(function () {
+                            // $(this) === link.parents("li")
+                            $(this).remove();
+                        });
+                    })
+                    .fail(function () {
+                        alert("Something failed!");
+                    });
+                }
+            });
+        });
+    </script>
+}

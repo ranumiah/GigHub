@@ -92,10 +92,10 @@ h6,
 }
 
 .form-control {
-	font-size: 17px;
-	padding: 20px 15px;
-	-ms-border-radius: 9px;
-	border-radius: 9px;
+    font-size: 17px;
+    height: 44px;
+    -ms-border-radius: 9px;
+    border-radius: 9px;
 }
 
 .form-control:focus {

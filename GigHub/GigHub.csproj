@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201612281051576_AddFollowing.Designer.cs">
       <DependentUpon>201612281051576_AddFollowing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612300945057_AddIsCanceledToGig.cs" />
+    <Compile Include="Migrations\201612300945057_AddIsCanceledToGig.Designer.cs">
+      <DependentUpon>201612300945057_AddIsCanceledToGig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -350,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612281051576_AddFollowing.resx">
       <DependentUpon>201612281051576_AddFollowing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612300945057_AddIsCanceledToGig.resx">
+      <DependentUpon>201612300945057_AddIsCanceledToGig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

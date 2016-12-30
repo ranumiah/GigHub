@@ -5,7 +5,8 @@
 }
 
 <h2>My Upcoming Gigs</h2>
-<ul class="gigs voffset3"> @* voffset3 created in Site.css *@
+<ul class="gigs voffset3">
+    @* voffset3 created in Site.css *@
     @foreach (var gig in Model)
     {
         <li>
@@ -47,29 +48,46 @@
 
             // Get all objects with the class="js-cancel-gig" and when Click then call this function
             $(".js-cancel-gig").click(function (e) { // e ==> is the event
-                
+
                 // link ==> is the source of the event
                 var link = $(e.target);
 
-                // Ask for confirmation using native javascript confirm box
-                if (confirm("Are you sure you want to delete this gig?")) {
-                    // if true then use jQuery AJAX
-                    $.ajax({
-                        url: "/api/gigs/" + link.attr("data-gig-id"),
-                        method: "DELETE" // [HttpDelete]
-                    })// This returns a Promise therefore .done and .fail scenario need to be handle
-                    .done(function () {
-                        // The parent of class="js-cancel-gig" Selector ==> <li></li>
-                        // Will have a fade out animation
-                        link.parents("li").fadeOut(function () {
-                            // $(this) === link.parents("li")
-                            $(this).remove();
-                        });
-                    })
-                    .fail(function () {
-                        alert("Something failed!");
-                    });
-                }
+                //http://bootboxjs.com/
+                bootbox.dialog({
+                    message: "Are you sure you want to cancel this gig?",
+                    title: "Confirm",
+                    buttons: {
+                        no: {
+                            label: "No",
+                            className: "btn-default",
+                            callback: function () {
+                                bootbox.hideAll();
+                            }
+                        },
+                        yes: {
+                            label: "Yes",
+                            className: "btn-danger",
+                            callback: function () {
+                                // use jQuery AJAX
+                                $.ajax({
+                                    url: "/api/gigs/" + link.attr("data-gig-id"),
+                                    method: "DELETE" // [HttpDelete]
+                                })// This returns a Promise therefore .done and .fail scenario need to be handle
+                                .done(function () {
+                                    // The parent of class="js-cancel-gig" Selector ==> <li></li>
+                                    // Will have a fade out animation
+                                    link.parents("li").fadeOut(function () {
+                                        // $(this) === link.parents("li")
+                                        $(this).remove();
+                                    });
+                                })
+                                .fail(function () {
+                                    alert("Something failed!");
+                                });
+                            }
+                        }
+                    }
+                });
             });
         });
     </script>

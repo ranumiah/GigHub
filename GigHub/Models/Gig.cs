@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace GigHub.Models
 {
@@ -13,7 +14,7 @@ namespace GigHub.Models
 
         public int Id { get; set; }
 
-        public bool IsCanceled { get; set; }
+        public bool IsCanceled { get; private set; }
 
         public ApplicationUser Artist { get; set; }
 
@@ -31,6 +32,18 @@ namespace GigHub.Models
         [Required]
         public byte GenreId { get; set; }
 
-        public ICollection<Attendance> Attendances { get; private set; }
+        public ICollection<Attendance> Attendances { get; }
+
+        public void Cancel()
+        {
+            IsCanceled = true;
+
+            var notification = new Notification(NotificationType.GigCanceled, this);
+
+            foreach (var attendee in Attendances.Select(x => x.Attendee))
+            {
+                attendee.Notify(notification);
+            }
+        }
     }
 }
